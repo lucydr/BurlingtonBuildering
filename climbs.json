@@ -1,0 +1,30 @@
+
+[
+  {
+    "id": "gut-punch",
+    "name": "Gut Punch",
+    "grade": "V8",
+    "location": "Gutterson",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "mantle-corner",
+    "name": "Mantle Corner",
+    "grade": "V2",
+    "location": "Gutterson",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "lafarete",
+    "name": "Lafarete",
+    "grade": "V4",
+    "location": "Lafayette",
+    "description": "",
+    "image": "",
+    "video": ""
+  }
+]
