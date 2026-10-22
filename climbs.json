@@ -80,12 +80,12 @@
     "video": "https://youtube.com/embed/ABOwdtUYma8"
   },
   {
-    "id": "backstage",
-    "name": "Backstage",
+    "id": "backstage-corner",
+    "name": "Backstage Corner",
     "grade": "V1",
-    "location": "",
+    "location": "Behind the theatre, near the lafayette climbs. The brick corner with the 1-inch crack.",
     "area": "Lafayette",
-    "description": "",
+    "description": "Layback the corner, topout onto the wall, then downclimb.",
     "image": "",
     "video": ""
   },
@@ -147,7 +147,7 @@
     "area": "Williams",
     "description": "Climb the arete. Finish by tapping the pipe, then downclimb or jump.",
     "image": "",
-    "video": ""
+    "video": "https://youtube.com/embed/d7HpvbZihZY"
   },
   {
     "id": "traverse",
@@ -157,7 +157,7 @@
     "area": "Billings",
     "description": "Start at the pipe and traverse the all all the way to the other pipe. Pumpy. You can also start earlier and finish later. Students have been climbing this wall for decades.",
     "image": "image/Billings-Traverse.jpg",
-    "video": ""
+    "video": "https://youtube.com/embed/ABOwdtUYma8"
   },
   {
     "id": "tower",
@@ -165,7 +165,7 @@
     "grade": "",
     "location": "",
     "area": "Billings",
-    "description": "",
+    "description": "Could probably highball the tower, finish sitting in the window frame.",
     "image": "",
     "video": ""
   },
@@ -173,9 +173,9 @@
     "id": "dumb-high",
     "name": "Dumb High",
     "grade": "V3",
-    "location": "",
+    "location": "To the left of "The Niche".",
     "area": "Ira Allen",
-    "description": "",
+    "description": "There is no topout, it's in the name.",
     "image": "",
     "video": "https://youtube.com/embed/PUf7eItQb24"
   },
@@ -183,31 +183,31 @@
     "id": "the-niche",
     "name": "The Niche",
     "grade": "V0",
-    "location": "",
+    "location": "To the left of the stairs.",
     "area": "Ira Allen",
-    "description": "",
+    "description": "Use the crimps to topout.",
     "image": "",
-    "video": ""
+    "video": "https://youtube.com/embed/f5XHN_Kt9n8"
   },
   {
     "id": "crimp-line",
     "name": "Crimp Line",
     "grade": "V1",
-    "location": "",
+    "location": "To the right of "The Niche".",
     "area": "Ira Allen",
-    "description": "",
+    "description": "Squat start to the left of the granite streak. Traverse right then topout onto the stairs.",
     "image": "",
-    "video": ""
+    "video": "https://youtube.com/embed/PlnyP3Qxfr0"
   },
   {
     "id": "the-chimney",
     "name": "The Chimney",
     "grade": "V0",
-    "location": "",
+    "location": "To the right of the stairs",
     "area": "Ira Allen",
-    "description": "",
+    "description": "Climb the chimney then topout.",
     "image": "",
-    "video": ""
+    "video": "https://youtube.com/embed/6I67HQQZLmQ"
   },
   {
     "id": "the-dogleg",
