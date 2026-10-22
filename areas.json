@@ -1,0 +1,142 @@
+[
+  {
+    "id": "gutterson",
+    "name": "Gutterson",
+    "category": "On Campus",
+    "description": "",
+    "coordinates": {
+      "latitude": null,
+      "longitude": null
+    }
+  },
+  {
+    "id": "lafayette",
+    "name": "Lafayette",
+    "category": "On Campus",
+    "description": "",
+    "coordinates": {
+      "latitude": null,
+      "longitude": null
+    }
+  },
+  {
+    "id": "williams",
+    "name": "Williams",
+    "category": "On Campus",
+    "description": "",
+    "coordinates": {
+      "latitude": null,
+      "longitude": null
+    }
+  },
+  {
+    "id": "billings",
+    "name": "Billings",
+    "category": "On Campus",
+    "description": "",
+    "coordinates": {
+      "latitude": null,
+      "longitude": null
+    }
+  },
+  {
+    "id": "ira-allen",
+    "name": "Ira Allen",
+    "category": "On Campus",
+    "description": "",
+    "coordinates": {
+      "latitude": null,
+      "longitude": null
+    }
+  },
+  {
+    "id": "votey",
+    "name": "Votey",
+    "category": "On Campus",
+    "description": "",
+    "coordinates": {
+      "latitude": null,
+      "longitude": null
+    }
+  },
+  {
+    "id": "the-diaper",
+    "name": "The Diaper",
+    "category": "On Campus",
+    "description": "",
+    "coordinates": {
+      "latitude": null,
+      "longitude": null
+    }
+  },
+  {
+    "id": "l-l",
+    "name": "L&L",
+    "category": "On Campus",
+    "description": "",
+    "coordinates": {
+      "latitude": null,
+      "longitude": null
+    }
+  },
+  {
+    "id": "church-st-garage",
+    "name": "Church St Garage",
+    "category": "Off Campus",
+    "description": "",
+    "coordinates": {
+      "latitude": null,
+      "longitude": null
+    }
+  },
+  {
+    "id": "u-mall-garage",
+    "name": "U-Mall Garage",
+    "category": "Off Campus",
+    "description": "",
+    "coordinates": {
+      "latitude": null,
+      "longitude": null
+    }
+  },
+  {
+    "id": "cathedral-church",
+    "name": "Cathedral Church",
+    "category": "Off Campus",
+    "description": "",
+    "coordinates": {
+      "latitude": null,
+      "longitude": null
+    }
+  },
+  {
+    "id": "cherry-st-garage",
+    "name": "Cherry St Garage",
+    "category": "Off Campus",
+    "description": "",
+    "coordinates": {
+      "latitude": null,
+      "longitude": null
+    }
+  },
+  {
+    "id": "ethan-allen-park",
+    "name": "Ethan Allen Park",
+    "category": "Off Campus",
+    "description": "",
+    "coordinates": {
+      "latitude": null,
+      "longitude": null
+    }
+  },
+  {
+    "id": "st-michael-s",
+    "name": "St. Michael's",
+    "category": "Off Campus",
+    "description": "",
+    "coordinates": {
+      "latitude": null,
+      "longitude": null
+    }
+  }
+]
