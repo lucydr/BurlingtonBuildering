@@ -13,10 +13,10 @@
     "id": "lafayette",
     "name": "Lafayette",
     "category": "On Campus",
-    "description": "",
+    "description": "Home to some cool boulders on the east entrance. Also, the four chimneys. The corner on the backside of the theatre is included in this area.",
     "coordinates": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 44.477806,
+      "longitude": -73.198262
     }
   },
   {
@@ -25,85 +25,85 @@
     "category": "On Campus",
     "description": "The granite masonry blocks on this building offer some climbing, but no topouts.",
     "coordinates": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 44.478563,
+      "longitude": -73.198633
     }
   },
   {
     "id": "billings",
     "name": "Billings",
     "category": "On Campus",
-    "description": "",
+    "description": "The climbs described in this area all involve the red masnory blocks with natural crimps.",
     "coordinates": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 44.479415,
+      "longitude": -73.199215
     }
   },
   {
     "id": "ira-allen",
     "name": "Ira Allen",
     "category": "On Campus",
-    "description": "",
+    "description": "The climbs in this area are all on the east side of the building. They are all pretty bouldery and involve standard brick crimps.",
     "coordinates": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 44.479741,
+      "longitude": -73.198784
     }
   },
   {
     "id": "votey",
     "name": "Votey",
     "category": "On Campus",
-    "description": "",
+    "description": "Votey has lot's of boulderable architecture, but no climbs have been established. You could probable climb the whole building if you knew how to get down.",
     "coordinates": {
-      "latitude": null,
-      "longitude": null
-    }
+      "latitude": 44.4794685,
+      "longitude": -73.1981228
+    },
   },
   {
     "id": "the-diaper",
     "name": "The Diaper",
     "category": "On Campus",
-    "description": "",
+    "description": "The sculpture with the picnic table by redstone lofts. You can climb it",
     "coordinates": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 44.469248,
+      "longitude": -73.197481
     }
   },
   {
     "id": "l-l",
     "name": "L&L",
     "category": "On Campus",
-    "description": "",
+    "description": "The only climb here is the crack on the mural.",
     "coordinates": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 44.474043,
+      "longitude": -73.194693
     }
   },
   {
     "id": "church-st-garage",
     "name": "Church St Garage",
     "category": "Off Campus",
-    "description": "",
+    "description": "Home to some cool crack climbs, and the hardest crack boulder in Vermont!",
     "coordinates": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 44.4787112,
+      "longitude": -73.2118213
     }
   },
   {
     "id": "u-mall-garage",
     "name": "U-Mall Garage",
     "category": "Off Campus",
-    "description": "",
+    "description": "Home to one established climb.",
     "coordinates": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 44.467279,
+      "longitude": -73.183530
     }
   },
   {
     "id": "cathedral-church",
     "name": "Cathedral Church",
     "category": "Off Campus",
-    "description": "",
+    "description": "Probable some cool climbs here! Very little is established.",
     "coordinates": {
       "latitude": null,
       "longitude": null
@@ -113,7 +113,7 @@
     "id": "cherry-st-garage",
     "name": "Cherry St Garage",
     "category": "Off Campus",
-    "description": "",
+    "description": "Has a couple of climbs in the alley, I'm not sure if there is more potential or not.",
     "coordinates": {
       "latitude": null,
       "longitude": null
@@ -123,7 +123,7 @@
     "id": "ethan-allen-park",
     "name": "Ethan Allen Park",
     "category": "Off Campus",
-    "description": "",
+    "description": "Historical Builder: \"Henry Can't Do It\".",
     "coordinates": {
       "latitude": null,
       "longitude": null
@@ -133,7 +133,7 @@
     "id": "st-michael-s",
     "name": "St. Michael's",
     "category": "Off Campus",
-    "description": "",
+    "description": "I have climbed a couple of the splitters visible from the road. There is probably a lot more. I've never gone all the way to the top of the tall one.",
     "coordinates": {
       "latitude": null,
       "longitude": null
