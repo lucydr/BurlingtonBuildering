@@ -60,7 +60,7 @@
     "video": ""
   },
   {
-    "id": "lafarete-arete",
+    "id": "lafayette-arete",
     "name": "Lafayette arete",
     "grade": "V4",
     "location": "East side of the building.",
@@ -93,9 +93,9 @@
     "id": "ne-chimney",
     "name": "NE Chimney",
     "grade": "V1",
-    "location": "",
+    "location": "By the north entrance, the chimney in the corner to the left of the doors.",
     "area": "Lafayette",
-    "description": "",
+    "description": "Can be climbed like a squeeze chimney, or can be laybacked.",
     "image": "",
     "video": ""
   },
@@ -103,9 +103,9 @@
     "id": "nw-chimney",
     "name": "NW Chimney",
     "grade": "V0",
-    "location": "",
+    "location": "By the north entrance, the chimney in the corner to the right of the doors.",
     "area": "Lafayette",
-    "description": "",
+    "description": "Can be climbed like a chimney, or can be laybacked.",
     "image": "",
     "video": ""
   },
@@ -133,9 +133,9 @@
     "id": "pillar-face",
     "name": "Pillar Face",
     "grade": "V2",
-    "location": "",
+    "location": "On the east side of the building, the pillar next to the walkway.",
     "area": "Williams",
-    "description": "",
+    "description": "Climb the face without using the arete. Finish by tapping the pipe, then downclimb or jump.",
     "image": "",
     "video": ""
   },
@@ -143,9 +143,9 @@
     "id": "pillar-arete",
     "name": "Pillar Arete",
     "grade": "V1",
-    "location": "",
+    "location": "On the east side of the building, the pillar next to the walkway.",
     "area": "Williams",
-    "description": "",
+    "description": "Climb the arete. Finish by tapping the pipe, then downclimb or jump.",
     "image": "",
     "video": ""
   },
