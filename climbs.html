@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1">
+<title>Climb | Burlington Buildering</title>
+
+<style>
+  body {
+    background: #f5f2e9;
+    color: #222;
+    font-family: Georgia, serif;
+    max-width: 760px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.5;
+  }
+
+  h1 { margin-bottom: 5px; }
+
+  a { color: #174c7e; }
+
+  .grade {
+    font-family: monospace;
+    font-weight: bold;
+  }
+
+  nav {
+    padding: 12px 0;
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #555;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+  }
+
+  iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+  }
+
+  footer {
+    margin-top: 50px;
+    border-top: 1px solid #555;
+    padding-top: 10px;
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1 id="name"></h1>
+  <p>
+    <span id="grade" class="grade"></span>
+    | <span id="location"></span>
+  </p>
+</header>
+
+<nav>
+  <a href="index.html">← All climbs</a>
+</nav>
+
+<main>
+  <div id="photo"></div>
+
+  <h2>Description</h2>
+  <p id="description"></p>
+
+  <div id="video"></div>
+</main>
+
+<footer>
+  Burlington Buildering
+</footer>
+
+<script>
+async function loadClimb() {
+  const params = new URLSearchParams(
+    window.location.search
+  );
+  const id = params.get("id");
+
+  const response = await fetch("climbs.json");
+  if (!response.ok) {
+    document.getElementById("name").textContent =
+      "Could not load climbs";
+    return;
+  }
+
+  const climbs = await response.json();
+  const climb = climbs.find(c => c.id === id);
+
+  if (!climb) {
+    document.getElementById("name").textContent =
+      "Climb not found";
+    return;
+  }
+
+  document.title = climb.name + " | Burlington Buildering";
+  document.getElementById("name").textContent = climb.name;
+  document.getElementById("grade").textContent =
+    climb.grade || "Ungraded";
+  document.getElementById("location").textContent =
+    climb.location;
+  document.getElementById("description").textContent =
+    climb.description || "Description coming soon.";
+
+  if (climb.image) {
+    const img = document.createElement("img");
+    img.src = climb.image;
+    img.alt = climb.name;
+    document.getElementById("photo").appendChild(img);
+  }
+
+  if (climb.video) {
+    const heading = document.createElement("h2");
+    heading.textContent = "Video";
+    const iframe = document.createElement("iframe");
+    iframe.src = climb.video;
+    iframe.title = climb.name + " beta video";
+    iframe.allowFullscreen = true;
+    document.getElementById("video").append(
+      heading, iframe
+    );
+  }
+}
+
+loadClimb();
+</script>
+
+</body>
+</html>
