@@ -1,6 +1,184 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Home | Burlington Buildering</title><style>
-body{background:#f5f2e9;color:#222;font-family:Georgia,serif;max-width:760px;margin:40px auto;padding:0 20px;line-height:1.5}h1{margin-bottom:4px}h2{margin-top:32px;border-bottom:1px solid #666;padding-bottom:5px}a{color:#174c7e}a:visited{color:#654478}nav{border-top:1px solid #666;border-bottom:1px solid #666;padding:10px 0;margin:20px 0}nav a{margin-right:18px}.entry{padding:8px 0;border-bottom:1px dotted #aaa;display:flex;justify-content:space-between;gap:12px}.muted{color:#666;font-size:14px}.grade{font-family:monospace;white-space:nowrap}img{max-width:100%;height:auto}iframe{width:100%;aspect-ratio:16/9;border:0}footer{border-top:1px solid #666;margin-top:50px;padding-top:10px;font-size:13px}
-</style></head><body><header><h1>Burlington Buildering</h1><p>An urban climbing guidebook.</p></header><nav><a href="index.html">Home</a></nav><main><p class="muted" id="count">Loading areas...</p><div id="areas"></div><h2>About</h2><p>A collection of buildering problems in and around Burlington, Vermont.</p><p>Respect access restrictions, private property, pedestrians, and the condition of buildings.</p></main><footer>Burlington Buildering</footer><script>
-async function load(){try{const [ar,cr]=await Promise.all([fetch('areas.json'),fetch('climbs.json')]);if(!ar.ok||!cr.ok)throw Error('Could not load data');const areas=await ar.json(),climbs=await cr.json();document.getElementById('count').textContent=`${areas.length} areas · ${climbs.length} climbs`;const root=document.getElementById('areas');for(const category of ['On Campus','Off Campus']){const h=document.createElement('h2');h.textContent=category;root.append(h);for(const area of areas.filter(a=>a.category===category)){const row=document.createElement('div');row.className='entry';const link=document.createElement('a');link.href='area.html?id='+encodeURIComponent(area.id);link.textContent=area.name;const n=document.createElement('span');n.className='muted';const count=climbs.filter(c=>c.area===area.name).length;n.textContent=count+' climb'+(count===1?'':'s');row.append(link,n);root.append(row)}}}catch(e){document.getElementById('count').textContent='Could not load areas.json or climbs.json';console.error(e)}}load();
-</script></body></html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Burlington Buildering</title>
+
+<style>
+body {
+  background: #f5f2e9;
+  color: #222;
+  font-family: Georgia, serif;
+  max-width: 760px;
+  margin: 40px auto;
+  padding: 0 20px;
+  line-height: 1.5;
+}
+
+h1 {
+  margin-bottom: 4px;
+}
+
+h2 {
+  margin-top: 32px;
+  border-bottom: 1px solid #666;
+  padding-bottom: 5px;
+}
+
+a {
+  color: #174c7e;
+}
+
+a:visited {
+  color: #654478;
+}
+
+nav {
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+  padding: 10px 0;
+  margin: 20px 0;
+}
+
+nav a {
+  margin-right: 18px;
+}
+
+.entry {
+  padding: 8px 0;
+  border-bottom: 1px dotted #aaa;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.muted {
+  color: #666;
+  font-size: 14px;
+}
+
+footer {
+  border-top: 1px solid #666;
+  margin-top: 50px;
+  padding-top: 10px;
+  font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Burlington Buildering</h1>
+  <p>An urban climbing guidebook.</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+</nav>
+
+<main>
+
+<p class="muted" id="count">Loading areas...</p>
+
+<div id="areas"></div>
+
+<h2>About</h2>
+
+<p>
+A collection of buildering problems in and
+around Burlington, Vermont.
+</p>
+
+<p>
+Respect access restrictions, private property,
+pedestrians, and the condition of buildings.
+</p>
+
+</main>
+
+<footer>Burlington Buildering</footer>
+
+<script>
+async function load() {
+  try {
+    // Fetch fresh copies of both JSON files
+    const [ar, cr] = await Promise.all([
+      fetch('areas.json?v=3', {cache: 'no-store'}),
+      fetch('climbs.json?v=3', {cache: 'no-store'})
+    ]);
+
+    if (!ar.ok || !cr.ok) {
+      throw new Error('Could not load data');
+    }
+
+    const areas = await ar.json();
+    const climbs = await cr.json();
+
+    document.getElementById('count').textContent =
+      areas.length + ' areas · ' +
+      climbs.length + ' climbs';
+
+    const root = document.getElementById('areas');
+
+    // Clear existing content
+    root.innerHTML = '';
+
+    // Organize areas into categories
+    for (const category of ['On Campus', 'Off Campus']) {
+
+      const heading = document.createElement('h2');
+      heading.textContent = category;
+      root.appendChild(heading);
+
+      const categoryAreas = areas.filter(
+        area => area.category === category
+      );
+
+      for (const area of categoryAreas) {
+
+        const row = document.createElement('div');
+        row.className = 'entry';
+
+        // Link to area page
+        const link = document.createElement('a');
+        link.href = 'area.html?id=' +
+          encodeURIComponent(area.id);
+        link.textContent = area.name;
+
+        // Count climbs belonging to this area
+        const areaName = String(area.name).trim().toLowerCase();
+
+        const count = climbs.filter(climb => {
+          const climbArea = String(
+            climb.area || ''
+          ).trim().toLowerCase();
+
+          return climbArea === areaName;
+        }).length;
+
+        const number = document.createElement('span');
+        number.className = 'muted';
+        number.textContent =
+          count + (count === 1 ? ' climb' : ' climbs');
+
+        row.appendChild(link);
+        row.appendChild(number);
+        root.appendChild(row);
+      }
+    }
+
+  } catch (error) {
+    document.getElementById('count').textContent =
+      'Could not load areas or climbs.';
+    console.error(error);
+  }
+}
+
+load();
+</script>
+
+</body>
+</html>
