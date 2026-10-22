@@ -63,11 +63,11 @@
     "id": "lafarete",
     "name": "Lafarete",
     "grade": "V4",
-    "location": "",
+    "location": "East side",
     "area": "Lafayette",
-    "description": "",
+    "description": "Start by the sign, but don't use it. Figure your way through the reachy moves until you can topout onto the beam. Downclimb/jump.",
     "image": "",
-    "video": ""
+    "video": "https://youtube.com/embed/-bnxv1QVkZ8"
   },
   {
     "id": "pillar",
@@ -177,7 +177,7 @@
     "area": "Ira Allen",
     "description": "",
     "image": "",
-    "video": "https://youtu.be/embed/PUf7eItQb24"
+    "video": "https://youtube.com/embed/PUf7eItQb24"
   },
   {
     "id": "the-niche",
