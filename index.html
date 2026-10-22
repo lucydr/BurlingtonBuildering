@@ -3,10 +3,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Burlington Buildering</title>
-
 <style>
   body {
     background: #f5f2e9;
@@ -17,52 +15,35 @@
     padding: 0 20px;
     line-height: 1.5;
   }
-
-  h1, h2, h3 {
-    line-height: 1.2;
+  h1 { font-size: 32px; margin-bottom: 3px; }
+  h2 {
+    margin-top: 35px;
+    border-bottom: 1px solid #555;
+    padding-bottom: 5px;
   }
-
-  h1 {
-    font-size: 32px;
-    margin-bottom: 5px;
-  }
-
-  a {
-    color: #174c7e;
-    text-decoration: underline;
-  }
-
-  a:visited {
-    color: #654478;
-  }
-
+  h3 { margin: 24px 0 8px; }
+  a { color: #174c7e; text-decoration: underline; }
+  a:visited { color: #654478; }
   nav {
-    margin: 20px 0;
     padding: 10px 0;
+    margin: 20px 0;
     border-top: 1px solid #555;
     border-bottom: 1px solid #555;
   }
-
-  nav a {
-    margin-right: 20px;
-  }
-
+  nav a { margin-right: 18px; }
+  .muted { color: #666; font-size: 14px; }
   .climb {
-    padding: 10px 0;
-    border-bottom: 1px dotted #999;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px dotted #aaa;
+    padding: 6px 0;
   }
-
   .grade {
     font-family: monospace;
-    font-weight: bold;
-    margin-left: 10px;
+    white-space: nowrap;
   }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-
+  .empty { font-style: italic; color: #666; }
   footer {
     margin-top: 50px;
     border-top: 1px solid #555;
@@ -71,7 +52,6 @@
   }
 </style>
 </head>
-
 <body>
 
 <header>
@@ -81,44 +61,131 @@
 
 <nav>
   <a href="index.html">Home</a>
-  <a href="#locations">Locations</a>
+  <a href="#on-campus">On campus</a>
+  <a href="#off-campus">Off campus</a>
   <a href="#about">About</a>
 </nav>
 
 <main>
-  <h2 id="locations">Locations</h2>
+  <p id="count" class="muted">Loading climbs...</p>
 
-  <h3>Gutterson</h3>
+  <section id="on-campus">
+    <h2>On Campus</h2>
+    <div id="campus-list"></div>
+  </section>
 
-  <div class="climb">
-    <a href="climbs/gut-punch.html">Gut Punch</a>
-    <span class="grade">V8</span>
-  </div>
+  <section id="off-campus">
+    <h2>Off Campus</h2>
+    <div id="offcampus-list"></div>
+  </section>
 
-  <div class="climb">
-    <a href="climbs/mantle-corner.html">
-      Mantle Corner
-    </a>
-    <span class="grade">V2</span>
-  </div>
-
-  <h3>Lafayette</h3>
-
-  <div class="climb">
-    <a href="climbs/lafarete.html">Lafarete</a>
-    <span class="grade">V4</span>
-  </div>
-
-  <h2 id="about">About</h2>
-  <p>
-    A collection of buildering problems
-    in Burlington, Vermont.
-  </p>
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      A collection of buildering problems
+      in and around Burlington, Vermont.
+    </p>
+    <p>
+      Climb responsibly. Respect access restrictions,
+      private property, pedestrians, and the
+      condition of the buildings.
+    </p>
+  </section>
 </main>
 
-<footer>
-  Burlington Buildering Guidebook
-</footer>
+<footer>Burlington Buildering Guidebook</footer>
 
+<script>
+const locations = {
+  "On Campus": [
+    "Gutterson",
+    "Lafayette",
+    "Williams",
+    "Billings",
+    "Ira Allen",
+    "Votey",
+    "The Diaper",
+    "L&L"
+  ],
+  "Off Campus": [
+    "Church St Garage",
+    "U-Mall Garage",
+    "Cathedral Church",
+    "Cherry St Garage",
+    "Ethan Allen Park",
+    "St. Michael's"
+  ]
+};
+
+function renderSection(containerId, names, climbs) {
+  const container = document.getElementById(containerId);
+
+  for (const location of names) {
+    const heading = document.createElement("h3");
+    const here = climbs.filter(c => c.location === location);
+
+    heading.textContent = `${location} (${here.length})`;
+    container.appendChild(heading);
+
+    if (!here.length) {
+      const empty = document.createElement("p");
+      empty.className = "empty";
+      empty.textContent = "No climbs listed yet.";
+      container.appendChild(empty);
+    }
+
+    for (const climb of here) {
+      const row = document.createElement("div");
+      row.className = "climb";
+
+      const link = document.createElement("a");
+      link.href = "climb.html?id=" +
+        encodeURIComponent(climb.id);
+      link.textContent = climb.name;
+
+      const grade = document.createElement("span");
+      grade.className = "grade";
+      grade.textContent = climb.grade || "?";
+
+      row.append(link, grade);
+      container.appendChild(row);
+    }
+  }
+}
+
+async function loadClimbs() {
+  try {
+    const response = await fetch("climbs.json");
+    if (!response.ok) {
+      throw new Error("Could not fetch climbs.json");
+    }
+
+    const climbs = await response.json();
+
+    document.getElementById("count").textContent =
+      `${climbs.length} climbs · ` +
+      `${Object.values(locations).flat().length} locations`;
+
+    renderSection(
+      "campus-list",
+      locations["On Campus"],
+      climbs
+    );
+
+    renderSection(
+      "offcampus-list",
+      locations["Off Campus"],
+      climbs
+    );
+  } catch (error) {
+    document.getElementById("count").textContent =
+      "Unable to load climbs. Check that " +
+      "climbs.json is in the repository root.";
+    console.error(error);
+  }
+}
+
+loadClimbs();
+</script>
 </body>
 </html>
