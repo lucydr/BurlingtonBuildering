@@ -60,24 +60,24 @@
     "video": ""
   },
   {
-    "id": "lafarete",
-    "name": "Lafarete",
+    "id": "lafarete-arete",
+    "name": "Lafayette arete",
     "grade": "V4",
-    "location": "East side",
+    "location": "East side of the building.",
     "area": "Lafayette",
     "description": "Start by the sign, but don't use it. Figure your way through the reachy moves until you can topout onto the beam. Downclimb/jump.",
     "image": "",
     "video": "https://youtube.com/embed/-bnxv1QVkZ8"
   },
   {
-    "id": "pillar",
-    "name": "Pillar",
+    "id": "lafayette-pillar",
+    "name": "Lafayette Pillar",
     "grade": "V3",
-    "location": "",
+    "location": "East side of the building.",
     "area": "Lafayette",
-    "description": "",
+    "description": "Climb the pillar until you can topout onto the beam. Downclimb/jump.",
     "image": "",
-    "video": ""
+    "video": "https://youtube.com/embed/ABOwdtUYma8"
   },
   {
     "id": "backstage",
