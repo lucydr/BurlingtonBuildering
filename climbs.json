@@ -197,7 +197,7 @@
     "area": "Ira Allen",
     "description": "Squat start to the left of the granite streak. Traverse right then topout onto the stairs.",
     "image": "",
-    "video": "https://youtube.com/embed/PlnyP3Qxfr0"
+    "video": "https://youtube.com/embed/nPun634M3Zk"
   },
   {
     "id": "the-chimney",
@@ -207,15 +207,15 @@
     "area": "Ira Allen",
     "description": "Climb the chimney then topout.",
     "image": "",
-    "video": "https://youtube.com/embed/6I67HQQZLmQ"
+    "video": "https://youtube.com/embed/EyF4DUnhB34"
   },
   {
     "id": "the-dogleg",
-    "name": "The Dogleg",
+    "name": "The Dogleg (open project)",
     "grade": "V6?",
-    "location": "",
+    "location": "To the left of Mantelpiece.",
     "area": "Ira Allen",
-    "description": "",
+    "description": "Start with a run and jump to the horizontal jug, then mantel in he corner. Move right to the frame, then move right again and use the samne topout as Mantelpiece.",
     "image": "",
     "video": ""
   },
@@ -223,19 +223,19 @@
     "id": "mantlepiece",
     "name": "Mantlepiece",
     "grade": "V2",
-    "location": "",
+    "location": "To the right the entrance by the parking lot. The left of the two corners.",
     "area": "Ira Allen",
-    "description": "",
+    "description": "Start on crimps, then climb the corner and topout.",
     "image": "",
     "video": ""
   },
   {
-    "id": "questionable-position",
-    "name": "Questionable Position",
+    "id": "short-cut",
+    "name": "Short Cut",
     "grade": "V3",
-    "location": "",
+    "location": "To the right the entrance by the parking lot. The right of the two corners.",
     "area": "Ira Allen",
-    "description": "",
+    "description": "Start on the crimps, figure out the sequence to topout. Reachy.",
     "image": "",
     "video": ""
   },
@@ -263,9 +263,9 @@
     "id": "l-l-crack",
     "name": "L&L Crack",
     "grade": "V3",
-    "location": "",
+    "location": "Along the busy walkway, across from L&L climb the left-most (longest) crack.",
     "area": "L&L",
-    "description": "",
+    "description": "Shallow ringlocks, One-mover pull-on crux. Kind of cool!",
     "image": "",
     "video": ""
   },
@@ -273,9 +273,9 @@
     "id": "crack-bum",
     "name": "Crack Bum",
     "grade": "V7",
-    "location": "",
+    "location": "The left of the two cracks.",
     "area": "Church St Garage",
-    "description": "",
+    "description": "Start on the crack. Climb the crack using the sloper. Topout.",
     "image": "",
     "video": ""
   },
@@ -283,9 +283,9 @@
     "id": "with-no-light",
     "name": "With No Light",
     "grade": "V8",
-    "location": "",
+    "location": "The right of the two cracks",
     "area": "Church St Garage",
-    "description": "",
+    "description": "Start by campusing the ring-locks. Climb the crack using the sloper. Topout.",
     "image": "",
     "video": ""
   },
@@ -293,9 +293,9 @@
     "id": "box-eater",
     "name": "Box Eater",
     "grade": "5.12 / Impossible",
-    "location": "",
+    "location": "The off-width under the two cracks.",
     "area": "Church St Garage",
-    "description": "",
+    "description": "I'm pretty sure this one goes, I've done a move on it... and every move is the same. It's bigger than two fists is the challenge. You kind of need a spotter to help you get out.",
     "image": "",
     "video": ""
   },
@@ -303,9 +303,9 @@
     "id": "rusty-trombone",
     "name": "Rusty Trombone",
     "grade": "V4",
-    "location": "",
+    "location": "Near the stairwell on the 4th floor.",
     "area": "Church St Garage",
-    "description": "",
+    "description": "Start standing on the railing. Climb the roof crack then finsih by swinging your feet onto the other railing. This climbs exists on every floor in different sizes. May be rusty or have debris,but don't let that deter you, just a wire brush would be nice.",
     "image": "",
     "video": ""
   },
@@ -313,9 +313,9 @@
     "id": "easy-access",
     "name": "Easy Access",
     "grade": "V3",
-    "location": "",
+    "location": "North of the other climbs.",
     "area": "Church St Garage",
-    "description": "",
+    "description": "Start with run and jump or tricky layback, then use the sloper and thin corner. Topout",
     "image": "",
     "video": ""
   },
@@ -325,7 +325,7 @@
     "grade": "5.8-5.12",
     "location": "",
     "area": "Church St Garage",
-    "description": "",
+    "description": "There are many possible routes on the outside of the garage. None have been climbed.",
     "image": "",
     "video": ""
   },
@@ -333,11 +333,11 @@
     "id": "creek-freak",
     "name": "Creek Freak",
     "grade": "5.9",
-    "location": "",
+    "location": "North west corner of the garage north of target.",
     "area": "U-Mall Garage",
-    "description": "",
+    "description": "This climb is obviously duplicated many times, but the most discrete version is described. Start by reaching high, then climb all three stories, you could bail at any story. The crack is a really good handjam, and sometimes it is wide enough to reach all the way back to a jug.",
     "image": "",
-    "video": ""
+    "video": "https://youtube.com/embed/zGqr9EJRGrE"
   },
   {
     "id": "outside-wall",
