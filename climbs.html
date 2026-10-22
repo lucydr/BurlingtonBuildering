@@ -1,7 +1,291 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Climb | Burlington Buildering</title><style>
-body{background:#f5f2e9;color:#222;font-family:Georgia,serif;max-width:760px;margin:40px auto;padding:0 20px;line-height:1.5}h1{margin-bottom:4px}h2{margin-top:32px;border-bottom:1px solid #666;padding-bottom:5px}a{color:#174c7e}a:visited{color:#654478}nav{border-top:1px solid #666;border-bottom:1px solid #666;padding:10px 0;margin:20px 0}nav a{margin-right:18px}.entry{padding:8px 0;border-bottom:1px dotted #aaa;display:flex;justify-content:space-between;gap:12px}.muted{color:#666;font-size:14px}.grade{font-family:monospace;white-space:nowrap}img{max-width:100%;height:auto}iframe{width:100%;aspect-ratio:16/9;border:0}footer{border-top:1px solid #666;margin-top:50px;padding-top:10px;font-size:13px}
-</style></head><body><header><h1 id="name">Loading climb...</h1><p><span class="grade" id="grade"></span> · <span id="area"></span></p></header><nav><a href="index.html">← All areas</a> <a id="back-area" href="index.html">Area page</a></nav><main><p><b>Location:</b> <span id="location"></span></p><div id="photo"></div><h2>Description</h2><p id="description"></p><div id="video"></div></main><footer>Burlington Buildering</footer><script>
-async function load(){try{const id=new URLSearchParams(location.search).get('id');const [cr,ar]=await Promise.all([fetch('climbs.json?v=4',{cache:'no-store'}),
-fetch('areas.json?v=4',{cache:'no-store'})]);if(!cr.ok||!ar.ok)throw Error('Data unavailable');const climbs=await cr.json(),areas=await ar.json(),c=climbs.find(x=>x.id===id);if(!c)throw Error('Climb not found');document.title=c.name+' | Burlington Buildering';document.getElementById('name').textContent=c.name;document.getElementById('grade').textContent=c.grade||'Ungraded';document.getElementById('area').textContent=c.area;document.getElementById('location').textContent=c.location||'Location details coming soon.';document.getElementById('description').textContent=c.description||'Description coming soon.';const a=areas.find(a=>a.name===c.area);if(a)document.getElementById('back-area').href='area.html?id='+encodeURIComponent(a.id);if(c.image){const img=document.createElement('img');img.src=c.image;img.alt=c.name;document.getElementById('photo').append(img)}if(c.video){const h=document.createElement('h2');h.textContent='Video';const v=document.createElement('iframe');v.src=c.video;v.title=c.name+' video';v.allowFullscreen=true;document.getElementById('video').append(h,v)}}catch(e){document.getElementById('name').textContent='Climb unavailable';console.error(e)}}load();
-</script></body></html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Climb | Burlington Buildering</title>
+
+<style>
+body {
+  background: #f5f2e9;
+  color: #222;
+  font-family: Georgia, serif;
+  max-width: 760px;
+  margin: 40px auto;
+  padding: 0 20px;
+  line-height: 1.5;
+}
+
+h1 {
+  margin-bottom: 4px;
+}
+
+h2 {
+  margin-top: 32px;
+  border-bottom: 1px solid #666;
+  padding-bottom: 5px;
+}
+
+a {
+  color: #174c7e;
+}
+
+a:visited {
+  color: #654478;
+}
+
+nav {
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+  padding: 10px 0;
+  margin: 20px 0;
+}
+
+nav a {
+  margin-right: 18px;
+}
+
+.muted {
+  color: #666;
+  font-size: 14px;
+}
+
+.grade {
+  font-family: monospace;
+  font-weight: bold;
+}
+
+#photo img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+}
+
+#video iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+
+footer {
+  border-top: 1px solid #666;
+  margin-top: 50px;
+  padding-top: 10px;
+  font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1 id="name">Loading climb...</h1>
+  <p>
+    <span class="grade" id="grade"></span>
+    ·
+    <span id="area"></span>
+  </p>
+</header>
+
+<nav>
+  <a href="index.html">← All areas</a>
+  <a id="back-area" href="index.html">Area page</a>
+</nav>
+
+<main>
+
+  <p>
+    <b>Location:</b>
+    <span id="location"></span>
+  </p>
+
+  <div id="photo"></div>
+
+  <h2>Description</h2>
+  <p id="description" style="white-space: pre-line;"></p>
+
+  <div id="video"></div>
+
+</main>
+
+<footer>Burlington Buildering</footer>
+
+<script>
+async function loadClimb() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    if (!id) {
+      throw new Error('No climb ID provided');
+    }
+
+    // Always request fresh data
+    const version = Date.now();
+
+    const [climbResponse, areaResponse] = await Promise.all([
+      fetch('climbs.json?v=' + version, {
+        cache: 'no-store'
+      }),
+      fetch('areas.json?v=' + version, {
+        cache: 'no-store'
+      })
+    ]);
+
+    if (!climbResponse.ok || !areaResponse.ok) {
+      throw new Error('Could not load climb data');
+    }
+
+    const climbs = await climbResponse.json();
+    const areas = await areaResponse.json();
+
+    const climb = climbs.find(c => c.id === id);
+
+    if (!climb) {
+      throw new Error('Climb not found');
+    }
+
+    // Page title and basic information
+    document.title =
+      climb.name + ' | Burlington Buildering';
+
+    document.getElementById('name').textContent =
+      climb.name;
+
+    document.getElementById('grade').textContent =
+      climb.grade || 'Ungraded';
+
+    document.getElementById('area').textContent =
+      climb.area || '';
+
+    document.getElementById('location').textContent =
+      climb.location || 'Location details coming soon.';
+
+    document.getElementById('description').textContent =
+      climb.description || 'Description coming soon.';
+
+    // Link back to the correct area
+    const area = areas.find(a =>
+      a.name.trim().toLowerCase() ===
+      (climb.area || '').trim().toLowerCase()
+    );
+
+    if (area) {
+      document.getElementById('back-area').href =
+        'area.html?id=' + encodeURIComponent(area.id);
+    }
+
+    // Climb photograph
+    const photoContainer =
+      document.getElementById('photo');
+
+    photoContainer.replaceChildren();
+
+    if (climb.image && climb.image.trim()) {
+      const img = document.createElement('img');
+
+      img.src = climb.image.trim();
+      img.alt = climb.name;
+
+      img.onerror = function() {
+        const message = document.createElement('p');
+        message.className = 'muted';
+        message.textContent =
+          'Photograph unavailable.';
+        photoContainer.replaceChildren(message);
+      };
+
+      photoContainer.appendChild(img);
+    }
+
+    // YouTube video
+    const videoContainer =
+      document.getElementById('video');
+
+    videoContainer.replaceChildren();
+
+    if (climb.video && climb.video.trim()) {
+      const heading = document.createElement('h2');
+      heading.textContent = 'Video';
+
+      const iframe = document.createElement('iframe');
+
+      let videoURL = climb.video.trim();
+
+      // Accept regular YouTube links or embed links
+      try {
+        const url = new URL(videoURL);
+        let videoID = '';
+
+        if (
+          url.hostname === 'youtube.com' ||
+          url.hostname === 'www.youtube.com' ||
+          url.hostname === 'm.youtube.com'
+        ) {
+          if (url.pathname === '/watch') {
+            videoID = url.searchParams.get('v');
+          } else if (
+            url.pathname.startsWith('/embed/') ||
+            url.pathname.startsWith('/shorts/') ||
+            url.pathname.startsWith('/live/')
+          ) {
+            videoID = url.pathname.split('/')[2];
+          }
+        } else if (
+          url.hostname === 'youtu.be' ||
+          url.hostname === 'www.youtu.be'
+        ) {
+          videoID = url.pathname.slice(1).split('/')[0];
+        }
+
+        if (videoID && /^[a-zA-Z0-9_-]{11}$/.test(videoID)) {
+          videoURL =
+            'https://www.youtube-nocookie.com/embed/' +
+            videoID;
+        }
+      } catch (error) {
+        console.warn('Invalid video URL:', videoURL);
+      }
+
+      iframe.src = videoURL;
+      iframe.title = climb.name + ' beta video';
+      iframe.loading = 'lazy';
+      iframe.allow =
+        'accelerometer; autoplay; clipboard-write; ' +
+        'encrypted-media; gyroscope; picture-in-picture; ' +
+        'web-share';
+      iframe.allowFullscreen = true;
+
+      const link = document.createElement('p');
+      const watchLink = document.createElement('a');
+
+      watchLink.href = climb.video;
+      watchLink.target = '_blank';
+      watchLink.rel = 'noopener noreferrer';
+      watchLink.textContent = 'Open video in a new tab';
+
+      link.appendChild(watchLink);
+
+      videoContainer.append(heading, iframe, link);
+    }
+
+  } catch (error) {
+    document.getElementById('name').textContent =
+      'Climb unavailable';
+
+    const message = document.createElement('p');
+    message.textContent = error.message;
+    document.querySelector('main').prepend(message);
+
+    console.error(error);
+  }
+}
+
+loadClimb();
+</script>
+
+</body>
+</html>
