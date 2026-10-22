@@ -2,20 +2,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 80px auto;
-            padding: 20px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1">
+<title>Burlington Buildering</title>
+
+<style>
+  body {
+    background: #f5f2e9;
+    color: #222;
+    font-family: Georgia, serif;
+    max-width: 760px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.5;
+  }
+
+  h1, h2, h3 {
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: 32px;
+    margin-bottom: 5px;
+  }
+
+  a {
+    color: #174c7e;
+    text-decoration: underline;
+  }
+
+  a:visited {
+    color: #654478;
+  }
+
+  nav {
+    margin: 20px 0;
+    padding: 10px 0;
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #555;
+  }
+
+  nav a {
+    margin-right: 20px;
+  }
+
+  .climb {
+    padding: 10px 0;
+    border-bottom: 1px dotted #999;
+  }
+
+  .grade {
+    font-family: monospace;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  footer {
+    margin-top: 50px;
+    border-top: 1px solid #555;
+    padding-top: 10px;
+    font-size: 13px;
+  }
+</style>
 </head>
+
 <body>
-    <h1>Welcome to my website</h1>
-    <p>This is my first website hosted on GitHub.</p>
+
+<header>
+  <h1>Burlington Buildering</h1>
+  <p>An urban climbing guidebook.</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="#locations">Locations</a>
+  <a href="#about">About</a>
+</nav>
+
+<main>
+  <h2 id="locations">Locations</h2>
+
+  <h3>Gutterson</h3>
+
+  <div class="climb">
+    <a href="climbs/gut-punch.html">Gut Punch</a>
+    <span class="grade">V8</span>
+  </div>
+
+  <div class="climb">
+    <a href="climbs/mantle-corner.html">
+      Mantle Corner
+    </a>
+    <span class="grade">V2</span>
+  </div>
+
+  <h3>Lafayette</h3>
+
+  <div class="climb">
+    <a href="climbs/lafarete.html">Lafarete</a>
+    <span class="grade">V4</span>
+  </div>
+
+  <h2 id="about">About</h2>
+  <p>
+    A collection of buildering problems
+    in Burlington, Vermont.
+  </p>
+</main>
+
+<footer>
+  Burlington Buildering Guidebook
+</footer>
+
 </body>
 </html>
