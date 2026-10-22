@@ -1,6 +1,243 @@
+
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Area | Burlington Buildering</title><style>
-body{background:#f5f2e9;color:#222;font-family:Georgia,serif;max-width:760px;margin:40px auto;padding:0 20px;line-height:1.5}h1{margin-bottom:4px}h2{margin-top:32px;border-bottom:1px solid #666;padding-bottom:5px}a{color:#174c7e}a:visited{color:#654478}nav{border-top:1px solid #666;border-bottom:1px solid #666;padding:10px 0;margin:20px 0}nav a{margin-right:18px}.entry{padding:8px 0;border-bottom:1px dotted #aaa;display:flex;justify-content:space-between;gap:12px}.muted{color:#666;font-size:14px}.grade{font-family:monospace;white-space:nowrap}img{max-width:100%;height:auto}iframe{width:100%;aspect-ratio:16/9;border:0}footer{border-top:1px solid #666;margin-top:50px;padding-top:10px;font-size:13px}
-</style></head><body><header><h1 id="name">Loading area...</h1><p class="muted" id="category"></p></header><nav><a href="index.html">← All areas</a></nav><main><p id="description"></p><p id="coords"></p><h2>Climbs</h2><div id="climbs"></div></main><footer>Burlington Buildering</footer><script>
-async function load(){try{const id=new URLSearchParams(location.search).get('id');const [ar,cr]=await Promise.all([fetch('areas.json'),fetch('climbs.json')]);if(!ar.ok||!cr.ok)throw Error('Data unavailable');const areas=await ar.json(),climbs=await cr.json();const area=areas.find(a=>a.id===id);if(!area)throw Error('Area not found');document.title=area.name+' | Burlington Buildering';document.getElementById('name').textContent=area.name;document.getElementById('category').textContent=area.category;document.getElementById('description').innerHTML=area.description||'Area description coming soon.';const c=area.coordinates||{};if(Number.isFinite(c.latitude)&&Number.isFinite(c.longitude)){const a=document.createElement('a');a.href='https://www.google.com/maps?q='+encodeURIComponent(c.latitude+','+c.longitude);a.textContent=`Coordinates: ${c.latitude}, ${c.longitude} (map)`;a.target='_blank';a.rel='noopener noreferrer';document.getElementById('coords').append(a)}else{document.getElementById('coords').textContent='Coordinates coming soon.'}const list=climbs.filter(x=>x.area===area.name);if(!list.length){document.getElementById('climbs').textContent='No climbs listed yet.'}for(const climb of list){const row=document.createElement('div');row.className='entry';const link=document.createElement('a');link.href='climbs.html?id='+encodeURIComponent(climb.id);link.textContent=climb.name;const grade=document.createElement('span');grade.className='grade';grade.textContent=climb.grade||'?';row.append(link,grade);document.getElementById('climbs').append(row)}}catch(e){document.getElementById('name').textContent='Area unavailable';console.error(e)}}load();
-</script></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Area | Burlington Buildering</title>
+
+<style>
+body {
+  background: #f5f2e9;
+  color: #222;
+  font-family: Georgia, serif;
+  max-width: 760px;
+  margin: 40px auto;
+  padding: 0 20px;
+  line-height: 1.5;
+}
+
+h1 { margin-bottom: 4px; }
+
+h2 {
+  margin-top: 32px;
+  border-bottom: 1px solid #666;
+  padding-bottom: 5px;
+}
+
+a { color: #174c7e; }
+a:visited { color: #654478; }
+
+nav {
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+  padding: 10px 0;
+  margin: 20px 0;
+}
+
+nav a { margin-right: 18px; }
+
+.entry {
+  padding: 8px 0;
+  border-bottom: 1px dotted #aaa;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.muted {
+  color: #666;
+  font-size: 14px;
+}
+
+.grade {
+  font-family: monospace;
+  white-space: nowrap;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: 0;
+}
+
+/* Previous and next area links */
+#area-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+#area-navigation a {
+  max-width: 48%;
+  margin-right: 0;
+}
+
+#next-area {
+  margin-left: auto;
+  text-align: right;
+}
+
+footer {
+  border-top: 1px solid #666;
+  margin-top: 50px;
+  padding-top: 10px;
+  font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1 id="name">Loading area...</h1>
+  <p class="muted" id="category"></p>
+</header>
+
+<nav>
+  <a href="index.html">← All areas</a>
+</nav>
+
+<main>
+  <p id="description"></p>
+  <p id="coords"></p>
+
+  <h2>Climbs</h2>
+  <div id="climbs"></div>
+
+  <nav id="area-navigation" aria-label="Previous and next areas">
+    <a id="previous-area" hidden></a>
+    <a id="next-area" hidden></a>
+  </nav>
+</main>
+
+<footer>Burlington Buildering</footer>
+
+<script>
+async function load() {
+  try {
+    const id = new URLSearchParams(location.search).get('id');
+
+    const [ar, cr] = await Promise.all([
+      fetch('areas.json?v=' + Date.now(), {cache: 'no-store'}),
+      fetch('climbs.json?v=' + Date.now(), {cache: 'no-store'})
+    ]);
+
+    if (!ar.ok || !cr.ok) {
+      throw Error('Data unavailable');
+    }
+
+    const areas = await ar.json();
+    const climbs = await cr.json();
+
+    const area = areas.find(a => a.id === id);
+
+    if (!area) {
+      throw Error('Area not found');
+    }
+
+    document.title = area.name + ' | Burlington Buildering';
+
+    document.getElementById('name').textContent = area.name;
+    document.getElementById('category').textContent = area.category;
+
+    // Allows hyperlinks in area descriptions
+    document.getElementById('description').innerHTML =
+      area.description || 'Area description coming soon.';
+
+    // Coordinates
+    const c = area.coordinates || {};
+
+    if (
+      Number.isFinite(c.latitude) &&
+      Number.isFinite(c.longitude)
+    ) {
+      const a = document.createElement('a');
+
+      a.href = 'https://www.google.com/maps?q=' +
+        encodeURIComponent(c.latitude + ',' + c.longitude);
+
+      a.textContent =
+        `Coordinates: ${c.latitude}, ${c.longitude} (map)`;
+
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+
+      document.getElementById('coords').append(a);
+    } else {
+      document.getElementById('coords').textContent =
+        'Coordinates coming soon.';
+    }
+
+    // List of climbs
+    const list = climbs.filter(x => x.area === area.name);
+
+    if (!list.length) {
+      document.getElementById('climbs').textContent =
+        'No climbs listed yet.';
+    }
+
+    for (const climb of list) {
+      const row = document.createElement('div');
+      row.className = 'entry';
+
+      const link = document.createElement('a');
+      link.href = 'climbs.html?id=' + encodeURIComponent(climb.id);
+      link.textContent = climb.name;
+
+      const grade = document.createElement('span');
+      grade.className = 'grade';
+      grade.textContent = climb.grade || '?';
+
+      row.append(link, grade);
+      document.getElementById('climbs').append(row);
+    }
+
+    // Previous and next areas
+    const currentIndex = areas.findIndex(a => a.id === id);
+
+    const previousLink =
+      document.getElementById('previous-area');
+
+    const nextLink =
+      document.getElementById('next-area');
+
+    if (currentIndex > 0) {
+      const previous = areas[currentIndex - 1];
+
+      previousLink.href =
+        'area.html?id=' + encodeURIComponent(previous.id);
+
+      previousLink.textContent = '← ' + previous.name;
+      previousLink.hidden = false;
+    }
+
+    if (currentIndex < areas.length - 1) {
+      const next = areas[currentIndex + 1];
+
+      nextLink.href =
+        'area.html?id=' + encodeURIComponent(next.id);
+
+      nextLink.textContent = next.name + ' →';
+      nextLink.hidden = false;
+    }
+
+  } catch (e) {
+    document.getElementById('name').textContent =
+      'Area unavailable';
+
+    console.error(e);
+  }
+}
+
+load();
+</script>
+
+</body>
+</html>
