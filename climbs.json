@@ -1,10 +1,10 @@
-
 [
   {
     "id": "gut-punch",
     "name": "Gut Punch",
     "grade": "V8",
     "location": "Gutterson",
+    "area": "On Campus",
     "description": "",
     "image": "",
     "video": ""
@@ -14,6 +14,37 @@
     "name": "Mantle Corner",
     "grade": "V2",
     "location": "Gutterson",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "2-story-tight-hands",
+    "name": "2-story tight hands",
+    "grade": "V2",
+    "location": "Gutterson",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "brick-fist",
+    "name": "Brick Fist",
+    "grade": "5.11",
+    "location": "Gutterson",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "sodomizer",
+    "name": "Sodomizer",
+    "grade": "",
+    "location": "Gutterson",
+    "area": "On Campus",
     "description": "",
     "image": "",
     "video": ""
@@ -23,6 +54,347 @@
     "name": "Lafarete",
     "grade": "V4",
     "location": "Lafayette",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "pillar",
+    "name": "Pillar",
+    "grade": "V3",
+    "location": "Lafayette",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "backstage",
+    "name": "Backstage",
+    "grade": "V1",
+    "location": "Lafayette",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "ne-chimney",
+    "name": "NE Chimney",
+    "grade": "V1",
+    "location": "Lafayette",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "nw-chimney",
+    "name": "NW Chimney",
+    "grade": "V0",
+    "location": "Lafayette",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "se-chimney",
+    "name": "SE Chimney",
+    "grade": "",
+    "location": "Lafayette",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "sw-chimney",
+    "name": "SW Chimney",
+    "grade": "",
+    "location": "Lafayette",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "pillar-face",
+    "name": "Pillar Face",
+    "grade": "V2",
+    "location": "Williams",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "pillar-arete",
+    "name": "Pillar Arete",
+    "grade": "V1",
+    "location": "Williams",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "traverse",
+    "name": "Traverse",
+    "grade": "5.11?",
+    "location": "Billings",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "tower",
+    "name": "Tower?",
+    "grade": "",
+    "location": "Billings",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "dumb-high",
+    "name": "Dumb High",
+    "grade": "V4",
+    "location": "Ira Allen",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "the-niche",
+    "name": "The Niche",
+    "grade": "V0",
+    "location": "Ira Allen",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "crimp-line",
+    "name": "Crimp Line",
+    "grade": "V1",
+    "location": "Ira Allen",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "the-chimney",
+    "name": "The Chimney",
+    "grade": "V0",
+    "location": "Ira Allen",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "the-dogleg",
+    "name": "The Dogleg",
+    "grade": "V6?",
+    "location": "Ira Allen",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "mantlepiece",
+    "name": "Mantlepiece",
+    "grade": "V2",
+    "location": "Ira Allen",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "questionable-position",
+    "name": "Questionable Position",
+    "grade": "V3",
+    "location": "Ira Allen",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "long-traverse",
+    "name": "Long Traverse",
+    "grade": "V1",
+    "location": "The Diaper",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "steep-traverse",
+    "name": "Steep Traverse",
+    "grade": "V1",
+    "location": "The Diaper",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "l-l-crack",
+    "name": "L&L Crack",
+    "grade": "V3",
+    "location": "L&L",
+    "area": "On Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "crack-bum",
+    "name": "Crack Bum",
+    "grade": "V7",
+    "location": "Church St Garage",
+    "area": "Off Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "with-no-light",
+    "name": "With No Light",
+    "grade": "V8",
+    "location": "Church St Garage",
+    "area": "Off Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "box-eater",
+    "name": "Box Eater",
+    "grade": "5.12 / Impossible",
+    "location": "Church St Garage",
+    "area": "Off Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "rusty-trombone",
+    "name": "Rusty Trombone",
+    "grade": "V4",
+    "location": "Church St Garage",
+    "area": "Off Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "easy-access",
+    "name": "Easy Access",
+    "grade": "V3",
+    "location": "Church St Garage",
+    "area": "Off Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "the-outside",
+    "name": "The Outside",
+    "grade": "5.8-5.12",
+    "location": "Church St Garage",
+    "area": "Off Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "creek-freak",
+    "name": "Creek Freak",
+    "grade": "5.9",
+    "location": "U-Mall Garage",
+    "area": "Off Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "outside-wall",
+    "name": "Outside Wall",
+    "grade": "V4",
+    "location": "Cathedral Church",
+    "area": "Off Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "pinch-arete",
+    "name": "Pinch Arete",
+    "grade": "",
+    "location": "Cathedral Church",
+    "area": "Off Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "baby-s-first-ringlock",
+    "name": "Baby's first ringlock",
+    "grade": "V0",
+    "location": "Cherry St Garage",
+    "area": "Off Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "another-one",
+    "name": "Another one",
+    "grade": "V1",
+    "location": "Cherry St Garage",
+    "area": "Off Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "henry-can-t-do-it",
+    "name": "Henry Can't Do It",
+    "grade": "5.10",
+    "location": "Ethan Allen Park",
+    "area": "Off Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "tall-crack",
+    "name": "Tall Crack",
+    "grade": "5.9",
+    "location": "St. Michael's",
+    "area": "Off Campus",
+    "description": "",
+    "image": "",
+    "video": ""
+  },
+  {
+    "id": "short-crack",
+    "name": "Short Crack",
+    "grade": "5.9",
+    "location": "St. Michael's",
+    "area": "Off Campus",
     "description": "",
     "image": "",
     "video": ""
