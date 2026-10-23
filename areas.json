@@ -1,4 +1,4 @@
-[
+er[
   {
     "id": "gutterson",
     "name": "Gutterson",
@@ -53,7 +53,7 @@
     "id": "votey",
     "name": "Votey",
     "category": "On Campus",
-    "description": "Votey has lot's of boulderable architecture, but no climbs have been established. You could probable climb the whole building if you knew how to get down.",
+    "description": "Votey has lot's of boulderable architecture, but most lines are one move. You could probably climb the whole building if you knew how to get down.",
     "coordinates": {
       "latitude": 44.4794685,
       "longitude": -73.1981228
