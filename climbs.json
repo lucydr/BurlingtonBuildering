@@ -61,7 +61,7 @@
   },
   {
     "id": "lafayette-arete",
-    "name": "Lafayette arete",
+    "name": "Lafayette arête",
     "grade": "V4",
     "location": "East side of the building.",
     "area": "Lafayette",
@@ -135,17 +135,17 @@
     "grade": "V2",
     "location": "On the east side of the building, the pillar next to the walkway.",
     "area": "Williams",
-    "description": "Climb the face without using the arete. Finish by tapping the pipe, then downclimb or jump.",
+    "description": "Climb the face without using the arête. Finish by tapping the pipe, then downclimb or jump.",
     "image": "",
     "video": "https://youtube.com/embed/Ww-DYt3p2TQ"
   },
   {
-    "id": "pillar-arete",
-    "name": "Pillar Arete",
+    "id": "pillar-arête",
+    "name": "Pillar arête",
     "grade": "V1",
     "location": "On the east side of the building, the pillar next to the walkway.",
     "area": "Williams",
-    "description": "Climb the arete. Finish by tapping the pipe, then downclimb or jump.",
+    "description": "Climb the arête. Finish by tapping the pipe, then downclimb or jump.",
     "image": "",
     "video": "https://youtube.com/embed/d7HpvbZihZY"
   },
@@ -350,8 +350,8 @@
     "video": ""
   },
   {
-    "id": "pinch-arete",
-    "name": "Pinch Arete",
+    "id": "pinch-arête",
+    "name": "Pinch arête",
     "grade": "",
     "location": "",
     "area": "Cathedral Church",
