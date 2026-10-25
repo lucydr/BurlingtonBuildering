@@ -7,51 +7,91 @@
 <title>Area | Burlington Buildering</title>
 
 <style>
-body {
-  background: #f5f2e9;
-  color: #222;
-  font-family: Georgia, serif;
-  max-width: 760px;
-  margin: 40px auto;
-  padding: 0 20px;
-  line-height: 1.5;
+* {
+  box-sizing: border-box;
 }
 
-h1 { margin-bottom: 4px; }
+html {
+  background: #154734;
+}
+
+body {
+  background: #e9dfb9;
+  color: #252820;
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 800px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 36px 38px 22px;
+  line-height: 1.55;
+  border-left: 1px solid #c5b887;
+  border-right: 1px solid #c5b887;
+}
+
+h1 {
+  margin: 0;
+  font-size: 30px;
+  letter-spacing: -0.5px;
+  color: #154734;
+}
 
 h2 {
+  font-size: 19px;
+  color: #154734;
   margin-top: 32px;
-  border-bottom: 1px solid #666;
-  padding-bottom: 5px;
+  border-bottom: 1px solid #a69e7f;
+  padding-bottom: 6px;
 }
 
-a { color: #174c7e; }
-a:visited { color: #654478; }
+a {
+  color: #174c7e;
+}
+
+a:visited {
+  color: #654478;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+header {
+  padding-bottom: 16px;
+  border-bottom: 2px solid #154734;
+}
+
+header p {
+  margin: 8px 0 0;
+}
 
 nav {
-  border-top: 1px solid #666;
-  border-bottom: 1px solid #666;
+  border-top: 1px solid #a69e7f;
+  border-bottom: 1px solid #a69e7f;
   padding: 10px 0;
   margin: 20px 0;
 }
 
-nav a { margin-right: 18px; }
+nav a {
+  margin-right: 18px;
+}
 
 .entry {
-  padding: 8px 0;
-  border-bottom: 1px dotted #aaa;
+  padding: 10px 0;
+  border-bottom: 1px solid #c6bc98;
   display: flex;
   justify-content: space-between;
   gap: 12px;
 }
 
 .muted {
-  color: #666;
-  font-size: 14px;
+  color: #565b50;
+  font-size: 13px;
 }
 
 .grade {
-  font-family: monospace;
+  font-size: 15px;
+  font-weight: 600;
+  color: #154734;
   white-space: nowrap;
 }
 
@@ -85,10 +125,21 @@ iframe {
 }
 
 footer {
-  border-top: 1px solid #666;
+  border-top: 1px solid #a69e7f;
   margin-top: 50px;
-  padding-top: 10px;
-  font-size: 13px;
+  padding-top: 12px;
+  font-size: 12px;
+  color: #565b50;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 24px 18px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
 }
 </style>
 </head>
