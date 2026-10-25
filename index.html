@@ -6,6 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Burlington Buildering</title>
 
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 <style>
 body {
   background: #f5f2e9;
@@ -59,6 +66,14 @@ nav a {
   font-size: 14px;
 }
 
+#area-map {
+  height: 400px;
+  width: 100%;
+  margin: 20px 0;
+  border: 1px solid #777;
+  z-index: 0;
+}
+
 footer {
   border-top: 1px solid #666;
   margin-top: 50px;
@@ -85,6 +100,9 @@ footer {
 
 <div id="areas"></div>
 
+<h2>Map</h2>
+<div id="area-map"></div>
+
 <h2>About</h2>
 
 <p>
@@ -93,7 +111,11 @@ around Burlington, Vermont.
 </p>
 
 <p>
-Most spots are best at night, but I've never been bothered. Use your best judgement, if you are asked to leave, please listen (and let me know!) If you try any of these climbs, or have anything to add, please also let me know! Feel free to email me lucydrur@gmail.com.
+Most spots are best at night, but I've never been bothered.
+Use your best judgement, if you are asked to leave, please
+listen (and let me know!) If you try any of these climbs,
+or have anything to add, please also let me know!
+Feel free to email me lucydrur@gmail.com.
 </p>
 
 </main>
@@ -103,10 +125,9 @@ Most spots are best at night, but I've never been bothered. Use your best judgem
 <script>
 async function load() {
   try {
-    // Fetch fresh copies of both JSON files
     const [ar, cr] = await Promise.all([
-      fetch('areas.json?v=3', {cache: 'no-store'}),
-      fetch('climbs.json?v=3', {cache: 'no-store'})
+      fetch('areas.json?v=' + Date.now(), {cache: 'no-store'}),
+      fetch('climbs.json?v=' + Date.now(), {cache: 'no-store'})
     ]);
 
     if (!ar.ok || !cr.ok) {
@@ -121,8 +142,6 @@ async function load() {
       climbs.length + ' climbs';
 
     const root = document.getElementById('areas');
-
-    // Clear existing content
     root.innerHTML = '';
 
     // Organize areas into categories
@@ -141,19 +160,17 @@ async function load() {
         const row = document.createElement('div');
         row.className = 'entry';
 
-        // Link to area page
         const link = document.createElement('a');
         link.href = 'area.html?id=' +
           encodeURIComponent(area.id);
         link.textContent = area.name;
 
-        // Count climbs belonging to this area
-        const areaName = String(area.name).trim().toLowerCase();
+        const areaName =
+          String(area.name).trim().toLowerCase();
 
         const count = climbs.filter(climb => {
-          const climbArea = String(
-            climb.area || ''
-          ).trim().toLowerCase();
+          const climbArea =
+            String(climb.area || '').trim().toLowerCase();
 
           return climbArea === areaName;
         }).length;
@@ -169,10 +186,70 @@ async function load() {
       }
     }
 
+    // Create interactive map
+    if (typeof L === 'undefined') {
+      throw new Error('Leaflet map library did not load');
+    }
+
+    const map = L.map('area-map').setView(
+      [44.477, -73.200],
+      13
+    );
+
+    L.tileLayer(
+      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      {
+        attribution: '&copy; OpenStreetMap contributors',
+        maxZoom: 19
+      }
+    ).addTo(map);
+
+    const bounds = [];
+
+    for (const area of areas) {
+      const coordinates = area.coordinates || {};
+      const lat = coordinates.latitude;
+      const lng = coordinates.longitude;
+
+      // Skip areas without valid coordinates
+      if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+        continue;
+      }
+
+      const marker = L.marker([lat, lng]).addTo(map);
+
+      const popup = document.createElement('div');
+      const link = document.createElement('a');
+
+      link.href =
+        'area.html?id=' + encodeURIComponent(area.id);
+
+      link.textContent = area.name;
+
+      popup.appendChild(link);
+      marker.bindPopup(popup);
+
+      bounds.push([lat, lng]);
+    }
+
+    // Automatically zoom to include all areas
+    if (bounds.length > 0) {
+      map.fitBounds(bounds, {
+        padding: [25, 25],
+        maxZoom: 15
+      });
+    }
+
   } catch (error) {
-    document.getElementById('count').textContent =
-      'Could not load areas or climbs.';
     console.error(error);
+
+    if (
+      document.getElementById('count').textContent ===
+      'Loading areas...'
+    ) {
+      document.getElementById('count').textContent =
+        'Could not load areas or climbs.';
+    }
   }
 }
 
