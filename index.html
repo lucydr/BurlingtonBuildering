@@ -6,79 +6,99 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Burlington Buildering</title>
 
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
->
-
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <style>
+* { box-sizing: border-box; }
+
+html {
+  background: #154734;
+}
+
 body {
-  background: #f5f2e9;
-  color: #222;
-  font-family: Georgia, serif;
-  max-width: 760px;
-  margin: 40px auto;
-  padding: 0 20px;
-  line-height: 1.5;
+  background: #e9dfb9;
+  color: #252820;
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 800px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 36px 38px 22px;
+  line-height: 1.55;
+  border-left: 1px solid #c5b887;
+  border-right: 1px solid #c5b887;
 }
 
 h1 {
-  margin-bottom: 4px;
+  font-size: 30px;
+  color: #154734;
+  margin: 0 0 4px;
+  letter-spacing: -0.5px;
 }
 
 h2 {
+  font-size: 19px;
+  color: #154734;
   margin-top: 32px;
-  border-bottom: 1px solid #666;
-  padding-bottom: 5px;
+  border-bottom: 1px solid #a69e7f;
+  padding-bottom: 6px;
 }
 
-a {
-  color: #174c7e;
+a { color: #174c7e; }
+a:visited { color: #654478; }
+a:hover { text-decoration: none; }
+
+header {
+  padding-bottom: 16px;
+  border-bottom: 2px solid #154734;
 }
 
-a:visited {
-  color: #654478;
-}
-
-nav {
-  border-top: 1px solid #666;
-  border-bottom: 1px solid #666;
-  padding: 10px 0;
-  margin: 20px 0;
-}
-
-nav a {
-  margin-right: 18px;
+header p {
+  margin: 4px 0 0;
+  font-size: 14px;
 }
 
 .entry {
-  padding: 8px 0;
-  border-bottom: 1px dotted #aaa;
+  padding: 10px 0;
+  border-bottom: 1px solid #c6bc98;
   display: flex;
   justify-content: space-between;
   gap: 12px;
 }
 
 .muted {
-  color: #666;
-  font-size: 14px;
+  color: #565b50;
+  font-size: 13px;
+}
+
+#count {
+  margin-top: 22px;
 }
 
 #area-map {
   height: 400px;
   width: 100%;
   margin: 20px 0;
-  border: 1px solid #777;
+  border: 1px solid #a69e7f;
   z-index: 0;
 }
 
 footer {
-  border-top: 1px solid #666;
+  border-top: 1px solid #a69e7f;
   margin-top: 50px;
-  padding-top: 10px;
-  font-size: 13px;
+  padding-top: 12px;
+  font-size: 12px;
+  color: #565b50;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 24px 18px;
+  }
+
+  h1 { font-size: 26px; }
+
+  #area-map { height: 330px; }
 }
 </style>
 </head>
@@ -89,10 +109,6 @@ footer {
   <h1>Burlington Buildering</h1>
   <p>A digital guidebook.</p>
 </header>
-
-<nav>
-  <a href="index.html">Home</a>
-</nav>
 
 <main>
 
@@ -144,9 +160,7 @@ async function load() {
     const root = document.getElementById('areas');
     root.innerHTML = '';
 
-    // Organize areas into categories
     for (const category of ['On Campus', 'Off Campus']) {
-
       const heading = document.createElement('h2');
       heading.textContent = category;
       root.appendChild(heading);
@@ -156,7 +170,6 @@ async function load() {
       );
 
       for (const area of categoryAreas) {
-
         const row = document.createElement('div');
         row.className = 'entry';
 
@@ -180,20 +193,17 @@ async function load() {
         number.textContent =
           count + (count === 1 ? ' climb' : ' climbs');
 
-        row.appendChild(link);
-        row.appendChild(number);
+        row.appendChild(link, number);
         root.appendChild(row);
       }
     }
 
-    // Create interactive map
     if (typeof L === 'undefined') {
-      throw new Error('Leaflet map library did not load');
+      throw new Error('Leaflet did not load');
     }
 
     const map = L.map('area-map').setView(
-      [44.477, -73.200],
-      13
+      [44.477, -73.200], 13
     );
 
     L.tileLayer(
@@ -207,11 +217,10 @@ async function load() {
     const bounds = [];
 
     for (const area of areas) {
-      const coordinates = area.coordinates || {};
-      const lat = coordinates.latitude;
-      const lng = coordinates.longitude;
+      const c = area.coordinates || {};
+      const lat = c.latitude;
+      const lng = c.longitude;
 
-      // Skip areas without valid coordinates
       if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
         continue;
       }
@@ -223,7 +232,6 @@ async function load() {
 
       link.href =
         'area.html?id=' + encodeURIComponent(area.id);
-
       link.textContent = area.name;
 
       popup.appendChild(link);
@@ -232,8 +240,7 @@ async function load() {
       bounds.push([lat, lng]);
     }
 
-    // Automatically zoom to include all areas
-    if (bounds.length > 0) {
+    if (bounds.length) {
       map.fitBounds(bounds, {
         padding: [25, 25],
         maxZoom: 15
@@ -243,10 +250,8 @@ async function load() {
   } catch (error) {
     console.error(error);
 
-    if (
-      document.getElementById('count').textContent ===
-      'Loading areas...'
-    ) {
+    if (document.getElementById('count').textContent ===
+        'Loading areas...') {
       document.getElementById('count').textContent =
         'Could not load areas or climbs.';
     }
